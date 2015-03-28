@@ -1,0 +1,9 @@
+{
+  "name": "privoxy-fx",
+  "title": "Privoxy Firefox Add-On",
+  "id": "jid1-dnyWGmNL0bAoQQ",
+  "description": "an add-on providing (most of?) Privoxy's functionality",
+  "author": "Anthropohedron",
+  "license": "GPL 2.0",
+  "version": "0.1"
+}
