@@ -1,0 +1,60 @@
+Controller:
+- load config
+- hook request/response
+- execute matching
+- build contexts
+- execute actions
+Configuration:
+- editing UI
+- persistence (and sync)
+- import/export
+- fast lookup
+Request Matching:
+- host pattern
+- path pattern
+- client tag pattern
+- client negative tag pattern
+Response Matching:
+- server tag pattern
+- server negative tag pattern
+Context:
+- accumulate actions
+- execute request actions
+- wait for response
+- execute response actions
+Actions:
+- add-header @request
+- block @request
+- change-x-forwarded-for @invalid
+- client-header-filter @request
+- client-header-tagger @request
+- content-type-overwrite @response
+- crunch-client-header @request
+- crunch-if-none-match @request
+- crunch-incoming-cookies @response
+- crunch-server-header @response
+- crunch-outgoing-cookies @request
+- deanimate-gifs @response @future
+- downgrade-http-version @invalid
+- external-filter @invalid
+- fast-redirects @response @future
+- filter @response @future
+- force-text-mode @response
+- forward-override @invalid
+- handle-as-empty-document @request
+- handle-as-image @request
+- hide-accept-language @request
+- hide-content-disposition @response
+- hide-if-modified-since @request
+- hide-from-header @invalid
+- hide-referrer @request
+- hide-user-agent @request
+- limit-connect @invalid
+- limit-cookie-lifetime @response
+- prevent-compression @request
+- overwrite-last-modified @request
+- redirect @request
+- server-header-filter @response
+- server-header-tagger @response
+- session-cookies-only @response
+- set-image-blocker @request
