@@ -16,6 +16,12 @@ exports["test create matcher"] = function(assert) {
   assert.ok(matcher, "Created a tag matcher");
 };
 
+exports["test create invalid matcher"] = function(assert) {
+  assert.throws(function() {
+    tagMaps.tagMatchForPattern("^User-Agent: Fake");
+  }, /invalid/i, "Tag pattern validation");
+};
+
 exports["test complete match request tag"] = function(assert) {
   var channel = { foo: "bar" };
   var matcher = tagMaps.tagMatchForPattern("TAG:^"+fakeUserAgent);
