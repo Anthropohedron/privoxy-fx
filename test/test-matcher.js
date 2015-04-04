@@ -17,11 +17,20 @@ exports["test create matcher"] = function(assert) {
 
 exports["test create match no patterns"] = function(assert) {
   assert.throws(function() {
-    new Matcher();
+    var matcher = new Matcher();
+    console.error("No patterns: ", matcher);
   }, /no patterns/i, "No arguments to Matcher constructor");
   assert.throws(function() {
-    new Matcher([]);
+    var matcher = new Matcher([]);
+    console.error("Empty patterns: ", matcher);
   }, /no patterns/i, "Empty array passed to Matcher constructor");
-}
+};
+
+exports["test create match invalid pattern"] = function(assert) {
+  assert.throws(function() {
+    var matcher = new Matcher([ "foo_" ]);
+    console.error("Invalid pattern: ", matcher);
+  }, /invalid pattern/i, "Invalid pattern passed to Matcher constructor");
+};
 
 require("sdk/test").run(exports);
