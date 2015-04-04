@@ -1,5 +1,16 @@
 var Matcher = require("./matcher").Matcher;
 
+function MockChannel(host, path) {
+  this.URI = {
+    host: host,
+    path: path
+  };
+}
+
+function createMockChannel(host, path) {
+  return new MockChannel(host, path);
+}
+
 exports["test create matcher"] = function(assert) {
   var patterns = [
     "TAG:^Content-Type: image/",
@@ -32,5 +43,14 @@ exports["test create match invalid pattern"] = function(assert) {
     console.error("Invalid pattern: ", matcher);
   }, /invalid pattern/i, "Invalid pattern passed to Matcher constructor");
 };
+
+exports["test exact host match"] = function(assert) {
+  var matcher = new Matcher([ "www.example.com" ]);
+  var channel = createMockChannel("www.example.com", "/");
+  assert.strictEqual(matcher.testRequest(channel), true,
+      "Exact host match request");
+  assert.strictEqual(matcher.testResponse(channel), true,
+      "Exact host match response");
+}
 
 require("sdk/test").run(exports);
