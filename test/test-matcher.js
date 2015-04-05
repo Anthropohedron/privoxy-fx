@@ -82,4 +82,38 @@ exports["test partial host match"] = function(assert) {
       "Wildcard host match response");
 }
 
+exports["test host nonmatch"] = function(assert) {
+  var channel = createMockChannel("example.com", "/");
+  var matcher = new Matcher([ "www." ]);
+  assert.strictEqual(matcher.testRequest(channel), false,
+      "Prefix host nonmatch request");
+  assert.strictEqual(matcher.testResponse(channel), false,
+      "Prefix host nonmatch response");
+  var matcher = new Matcher([ "example.co" ]);
+  assert.strictEqual(matcher.testRequest(channel), false,
+      "Incomplete host nonmatch request");
+  assert.strictEqual(matcher.testResponse(channel), false,
+      "Incomplete host nonmatch response");
+  var matcher = new Matcher([ ".ample.com" ]);
+  assert.strictEqual(matcher.testRequest(channel), false,
+      "Suffix host nonmatch request");
+  assert.strictEqual(matcher.testResponse(channel), false,
+      "Suffix host nonmatch response");
+  var matcher = new Matcher([ ".exam." ]);
+  assert.strictEqual(matcher.testRequest(channel), false,
+      "Middle host nonmatch request");
+  assert.strictEqual(matcher.testResponse(channel), false,
+      "Middle host nonmatch response");
+  var matcher = new Matcher([ "*.example.com" ]);
+  assert.strictEqual(matcher.testRequest(channel), false,
+      "Glob host nonmatch request");
+  assert.strictEqual(matcher.testResponse(channel), false,
+      "Glob host nonmatch response");
+  var matcher = new Matcher([ "exa?mple.com" ]);
+  assert.strictEqual(matcher.testRequest(channel), false,
+      "Wildcard nonhost match request");
+  assert.strictEqual(matcher.testResponse(channel), false,
+      "Wildcard nonhost match response");
+}
+
 require("sdk/test").run(exports);
