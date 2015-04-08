@@ -4,6 +4,13 @@
   "id": "jid1-dnyWGmNL0bAoQQ",
   "description": "an add-on providing (most of?) Privoxy's functionality",
   "author": "Anthropohedron",
+  "preferences": [{
+    "name": "configJSON",
+    "title": "Configuration",
+    "description": "Configuration object serialized to JSON",
+    "type": "string",
+    "value": "null"
+  }],
   "license": "GPL 2.0",
   "version": "0.1"
 }
