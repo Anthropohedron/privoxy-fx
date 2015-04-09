@@ -14,7 +14,7 @@ exports["test controller lifecycle"] = function(assert) {
       "Controller invalidates only once");
   assert.strictEqual(controller.isValid(), false,
       "Controller is still invalid");
-}
+};
 
 var expectedTopics = [
   "http-on-examine-cached-response",
@@ -82,7 +82,7 @@ exports["test controller observes"] = function(assert) {
   assert.strictEqual(controller.isValid(), false,
       "Controller is still invalid");
   util.clearMock("nsIObserverService");
-}
+};
 
 require("sdk/test").run(exports);
 

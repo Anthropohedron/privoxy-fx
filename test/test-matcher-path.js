@@ -9,7 +9,7 @@ exports["test exact path match"] = function(assert) {
       "Exact path match request");
   assert.strictEqual(matcher.testResponse(channel), true,
       "Exact path match response");
-}
+};
 
 exports["test partial path match"] = function(assert) {
   var channel = mock.createMockChannel("www.example.com", "/foo/bar/baz.html");
@@ -37,7 +37,7 @@ exports["test partial path match"] = function(assert) {
       "Complex regex path match request");
   assert.strictEqual(matcher.testResponse(channel), true,
       "Complex regex path match response");
-}
+};
 
 exports["test path nonmatch"] = function(assert) {
   var channel = mock.createMockChannel("example.com", "/foo/bar/baz.html");
@@ -77,7 +77,7 @@ exports["test path nonmatch"] = function(assert) {
       "Wildcard nonpath match request");
   assert.strictEqual(matcher.testResponse(channel), false,
       "Wildcard nonpath match response");
-}
+};
 
 exports["test partial host match"] = function(assert) {
   var channel = mock.createMockChannel("www.example.com", "/foo.html");
@@ -111,7 +111,7 @@ exports["test partial host match"] = function(assert) {
       "Wildcard host/path match request");
   assert.strictEqual(matcher.testResponse(channel), true,
       "Wildcard host/path match response");
-}
+};
 
 exports["test host nonmatch"] = function(assert) {
   var channel = mock.createMockChannel("example.com", "/foo.html");
@@ -151,7 +151,7 @@ exports["test host nonmatch"] = function(assert) {
       "Wildcard nonhost/path match request");
   assert.strictEqual(matcher.testResponse(channel), false,
       "Wildcard nonhost/path match response");
-}
+};
 
 require("sdk/test").run(exports);
 

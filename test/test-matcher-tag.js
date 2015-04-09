@@ -12,7 +12,7 @@ exports["test exact tag match"] = function(assert) {
       "Exact tag match request");
   assert.strictEqual(matcher.testResponse(channel), false,
       "Exact path nonmatch response");
-}
+};
 
 require("sdk/test").run(exports);
 

@@ -9,7 +9,7 @@ exports["test exact host match"] = function(assert) {
       "Exact host match request");
   assert.strictEqual(matcher.testResponse(channel), true,
       "Exact host match response");
-}
+};
 
 exports["test partial host match"] = function(assert) {
   var channel = mock.createMockChannel("www.example.com", "/");
@@ -43,7 +43,7 @@ exports["test partial host match"] = function(assert) {
       "Wildcard host match request");
   assert.strictEqual(matcher.testResponse(channel), true,
       "Wildcard host match response");
-}
+};
 
 exports["test host nonmatch"] = function(assert) {
   var channel = mock.createMockChannel("example.com", "/");
@@ -83,7 +83,7 @@ exports["test host nonmatch"] = function(assert) {
       "Wildcard nonhost match request");
   assert.strictEqual(matcher.testResponse(channel), false,
       "Wildcard nonhost match response");
-}
+};
 
 require("sdk/test").run(exports);
 
