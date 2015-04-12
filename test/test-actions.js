@@ -1,7 +1,7 @@
-var aParser = require("./actions");
+var actionMgr = require("./actions");
 
 exports["test parse valid"] = function(assert) {
-  var actions = aParser.parseActions([
+  var actions = actionMgr.parseActions([
       "{",
       "+block{nothing}",
       "-handle-as-image",
@@ -13,16 +13,16 @@ exports["test parse valid"] = function(assert) {
 
 exports["test parse invalid"] = function(assert) {
   assert.throws(function() {
-    aParser.parseActions("{ foo +block{nothing} -handle-as-image }");
+    actionMgr.parseActions("{ foo +block{nothing} -handle-as-image }");
   }, "Extra garbage inside braces");
   assert.throws(function() {
-    aParser.parseActions("foo{ +block{nothing} -handle-as-image }");
+    actionMgr.parseActions("foo{ +block{nothing} -handle-as-image }");
   }, "Extra garbage outside braces");
   assert.throws(function() {
-    aParser.parseActions("{ +block{nothing}} -handle-as-image }");
+    actionMgr.parseActions("{ +block{nothing}} -handle-as-image }");
   }, "Extra braces");
   assert.throws(function() {
-    aParser.parseActions("{} +block{nothing} -handle-as-image {}");
+    actionMgr.parseActions("{} +block{nothing} -handle-as-image {}");
   }, "More extra braces");
 };
 
