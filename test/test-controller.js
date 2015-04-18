@@ -1,9 +1,8 @@
 var util = require("./util");
-var Controller = require("./controller").Controller;
+var controller = require("./controller");
 
 exports["test controller lifecycle"] = function(assert) {
-  var controller = new Controller();
-  assert.ok(controller, "Created controller");
+  assert.ok(controller.initialize(), "Initialized controller");
   assert.strictEqual(controller.isValid(), true,
       "Controller is valid");
   assert.strictEqual(controller.invalidate(), true,
@@ -66,10 +65,9 @@ MockObserverService.prototype = {
 exports["test controller observes"] = function(assert) {
   var mockObSrv = new MockObserverService(assert);
   util.setMock("nsIObserverService", mockObSrv);
-  var controller = new Controller();
-  assert.ok(controller, "Created controller");
+  assert.ok(controller.initialize(), "Initialized controller");
   mockObSrv.checkTopics("Controller subscribed to all expected topics");
-  mockObSrv.checkControllers(controller);
+  mockObSrv.checkControllers(controller.getObserver());
   assert.strictEqual(controller.invalidate(), true,
       "Controller invalidates");
   mockObSrv.checkTopics("Controller unsubscribed from all expected topics");
